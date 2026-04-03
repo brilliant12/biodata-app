@@ -1,0 +1,11 @@
+<svg width="200" height="140" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="140" fill="white" stroke="black"></rect>
+  <text x="50%" y="20%" text-anchor="middle" font-size="12">CLASSIC</text>
+
+  <rect x="10" y="40" width="60" height="70" fill="#ddd"></rect>
+  
+  <line x1="80" y1="45" x2="190" y2="45" stroke="black"></line>
+  <line x1="80" y1="60" x2="190" y2="60" stroke="black"></line>
+  <line x1="80" y1="75" x2="190" y2="75" stroke="black"></line>
+  <line x1="80" y1="90" x2="190" y2="90" stroke="black"></line>
+</svg>

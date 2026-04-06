@@ -1,167 +1,68 @@
-.preview-wrapper {
-
+/* NEW: Clean Desk Feel */
+.preview-workspace {
+  background-color: #f1f5f9; /* Light Slate */
   position: relative;
-
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Scrollable preview */
-
 .preview-scroll {
-
-  height: calc(100vh - 90px);
-
+  flex-grow: 1;
   overflow-y: auto;
-
-  background: #e9ecef;
-
   padding: 20px;
-
+  display: flex;
+  justify-content: center;
 }
 
-/* A4 paper */
-
-.preview-scroll {
-
-  height: calc(100vh - 90px);
-
-  overflow-y: auto;
-
-  background: #e9ecef;
-
-  padding: 25px;
-
+/* Fixed Top Toolbar (No Overlap) */
+.preview-toolbar {
+  position: relative !important;
+  z-index: 100;
+  background: #fff !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  border-radius: 0 !important;
+  padding: 8px 16px !important;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05) !important;
 }
 
-/* Zoom container */
+.preview-toolbar .btn-light {
+  background: #f1f5f9 !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+/* A4 Paper Styling */
+.a4-page {
+  width: 210mm;
+  min-height: 297mm;
+  background: #fff;
+  margin: 0 auto 40px;
+  box-shadow: 
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transform-origin: top center;
+  transition: transform 0.2s ease;
+}
+
+/* Responsive Scaling for Mobile */
+@media (max-width: 992px) {
+  .preview-zoom {
+    transform: scale(0.4) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .preview-zoom {
+    transform: scale(0.35) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .preview-zoom {
+    transform: scale(0.3) !important;
+  }
+}
 
 .preview-zoom {
-
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-
-  gap: 20px;
-
-}
-
-/* A4 page */
-
-
-/* Page number */
-
-.a4-page::after {
-
-  content: attr(data-page);
-
-  position: absolute;
-
-  bottom: 10px;
-
-  right: 20px;
-
-  font-size: 12px;
-
-  color: #999;
-
-}
-.preview-toolbar {
-
-  position: sticky;
-
-  top: 0;
-
-  z-index: 10;
-
-  border-radius: 8px;
-
-}
-
-/* Page label */
-
-.page-label {
-
-  position: absolute;
-
-  bottom: 10px;
-
-  right: 20px;
-
-  font-size: 12px;
-
-  color: #999;
-
-}
-
-/* Decorative biodata border */
-
-.biodata-page-border {
-
-  border: 4px solid #c59d5f;
-
-  padding: 20px;
-
-  height: 100%;
-
-  position: relative;
-
-}
-
-/* Inner thin border */
-
-.biodata-page-border::before {
-
-  content: "";
-
-  position: absolute;
-
-  top: 10px;
-  bottom: 10px;
-  left: 10px;
-  right: 10px;
-
-  border: 1px solid #c59d5f;
-
-  pointer-events: none;
-
-}
-
-/* Header Sanskrit text */
-
-.biodata-header-text {
-
-  text-align: center;
-
-  font-size: 20px;
-
-  font-weight: 600;
-
-  color: #8b5e3c;
-
-  margin-bottom: 15px;
-
-  font-family: "Georgia", serif;
-
-}
-.a4-page {
-
-  width: 794px;
-  min-height: 1123px;
-
-  margin: auto;
-
-  background: white;
-  font-family: "Times New Roman", serif;
-
-}
-
-/* Safe printing area */
-
-.pdf-safe-area {
-
-  padding: 20px;
-
-  box-sizing: border-box;
-
+  width: 100%;
 }

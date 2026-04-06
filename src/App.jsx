@@ -54,121 +54,102 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
-
-    const location = useLocation();
+  const location = useLocation();
   const params = new URLSearchParams(location.search);
   const templateId = params.get("template");
-  
+
   return (
     <BiodataProvider initialTemplate={templateId}>
-      <Container fluid className="p-3">
+      <Container fluid className="bg-white min-vh-100 p-0">
         <Suspense fallback={<div>Loading...</div>}></Suspense>
-        <Row>
-          <Col md={4} style={{ maxHeight: "100vh", overflowY: "auto" }}>
+        <Row className="g-0">
+          <Col 
+            md={4} 
+            className="sidebar-scroll border-end-md" 
+            style={{ 
+              height: window.innerWidth > 768 ? "100vh" : "auto", 
+              overflowY: "auto", 
+              padding: "16px",
+              backgroundColor: "#fff"
+            }}
+          >
+            <div className="mb-3 px-1">
+              <h5 className="fw-bold mb-0">Biodata Builder</h5>
+              <p className="text-muted small mb-0">Fill details to preview</p>
+            </div>
+
             <FormProgress />
-
             <TemplateThumbnail />
-
             <PhotoUploader />
-          <Accordion defaultActiveKey="0" alwaysOpen>
-
-  <Accordion.Item eventKey="0">
-    <Accordion.Header>
-      <FontAwesomeIcon
-        icon={faUser}
-        className="me-2 text-primary"
-      />
-      Personal Details
-    </Accordion.Header>
-
-    <Accordion.Body>
-      <PersonalDetails />
-    </Accordion.Body>
-  </Accordion.Item>
-
-
-  <Accordion.Item eventKey="1">
-    <Accordion.Header>
-      <FontAwesomeIcon
-        icon={faUsers}
-        className="me-2 text-primary"
-      />
-      Family Details
-    </Accordion.Header>
-
-    <Accordion.Body>
-      <FamilyDetails />
-    </Accordion.Body>
-  </Accordion.Item>
-
-
-  <Accordion.Item eventKey="2">
-    <Accordion.Header>
-      <FontAwesomeIcon
-        icon={faGraduationCap}
-        className="me-2 text-primary"
-      />
-      Education
-    </Accordion.Header>
-
-    <Accordion.Body>
-      <EducationDetails />
-    </Accordion.Body>
-  </Accordion.Item>
-
-
-  <Accordion.Item eventKey="3">
-    <Accordion.Header>
-      <FontAwesomeIcon
-        icon={faStar}
-        className="me-2 text-primary"
-      />
-      Horoscope
-    </Accordion.Header>
-
-    <Accordion.Body>
-      <HoroscopeDetails />
-    </Accordion.Body>
-  </Accordion.Item>
-
-
-  <Accordion.Item eventKey="4">
-    <Accordion.Header>
-      <FontAwesomeIcon
-        icon={faRing}
-        className="me-2 text-primary"
-      />
-      Partner Expectation
-    </Accordion.Header>
-
-    <Accordion.Body>
-      <PartnerExpectation />
-    </Accordion.Body>
-  </Accordion.Item>
-
-
-  {/* FIXED — INSIDE ACCORDION */}
-
-  <Accordion.Item eventKey="5">
-    <Accordion.Header>
-       <FontAwesomeIcon
-        icon={faCircleInfo}
-        className="me-2 text-primary"
-      />
-      Other Details
-    </Accordion.Header>
-
-    <Accordion.Body>
-      <OtherDetails />
-    </Accordion.Body>
-  </Accordion.Item>
-
-</Accordion>
             
-            <ExportPDF />
+            <Accordion defaultActiveKey="0" className="mt-3">
+              <Accordion.Item eventKey="0">
+                <Accordion.Header>
+                  <FontAwesomeIcon icon={faUser} />
+                  Personal Info
+                </Accordion.Header>
+                <Accordion.Body className="p-3">
+                  <PersonalDetails />
+                </Accordion.Body>
+              </Accordion.Item>
+
+              <Accordion.Item eventKey="1">
+                <Accordion.Header>
+                  <FontAwesomeIcon icon={faUsers} />
+                  Family Info
+                </Accordion.Header>
+                <Accordion.Body className="p-3">
+                  <FamilyDetails />
+                </Accordion.Body>
+              </Accordion.Item>
+
+              <Accordion.Item eventKey="2">
+                <Accordion.Header>
+                  <FontAwesomeIcon icon={faGraduationCap} />
+                  Education & Career
+                </Accordion.Header>
+                <Accordion.Body className="p-3">
+                  <EducationDetails />
+                </Accordion.Body>
+              </Accordion.Item>
+
+              <Accordion.Item eventKey="3">
+                <Accordion.Header>
+                  <FontAwesomeIcon icon={faStar} />
+                  Horoscope
+                </Accordion.Header>
+                <Accordion.Body className="p-3">
+                  <HoroscopeDetails />
+                </Accordion.Body>
+              </Accordion.Item>
+
+              <Accordion.Item eventKey="4">
+                <Accordion.Header>
+                  <FontAwesomeIcon icon={faRing} />
+                  Partner Expectations
+                </Accordion.Header>
+                <Accordion.Body className="p-3">
+                  <PartnerExpectation />
+                </Accordion.Body>
+              </Accordion.Item>
+
+              <Accordion.Item eventKey="5">
+                <Accordion.Header>
+                  <FontAwesomeIcon icon={faCircleInfo} />
+                  Other Info
+                </Accordion.Header>
+                <Accordion.Body className="p-3">
+                  <OtherDetails />
+                </Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
+            
+            <div className="mt-3 pb-3">
+              <ExportPDF />
+            </div>
           </Col>
 
-          <Col md={8}>
+          <Col md={8} className="preview-workspace">
             <BiodataPreview />
           </Col>
         </Row>

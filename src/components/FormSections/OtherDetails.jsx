@@ -51,105 +51,54 @@ function OtherDetails() {
   };
 
   return (
+    <div className="form-section-content">
+      {details.map((item, index) => (
+        <Row key={index} className="mb-2 align-items-end">
+          <Col xs={5}>
+            <Form.Group>
+              <Form.Label>Label</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="e.g. Blood Group"
+                value={item.label}
+                onChange={(e) => handleChange(index, "label", e.target.value)}
+              />
+            </Form.Group>
+          </Col>
 
-    <Card className="mb-3 shadow">
+          <Col xs={5}>
+            <Form.Group>
+              <Form.Label>Value</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="e.g. O+"
+                value={item.value}
+                onChange={(e) => handleChange(index, "value", e.target.value)}
+              />
+            </Form.Group>
+          </Col>
 
-      <Card.Header>
-        Other Details
-      </Card.Header>
+          <Col xs={2}>
+            <Button
+              variant="danger"
+              onClick={() => removeRow(index)}
+              className="w-100 p-2"
+            >
+              ×
+            </Button>
+          </Col>
+        </Row>
+      ))}
 
-      <Card.Body>
-
-        {details.map((item, index) => (
-
-          <Row key={index} className="mb-2 align-items-end">
-
-            {/* Label */}
-
-            <Col md={5}>
-
-              <Form.Group>
-
-                <Form.Label>
-                  Label
-                </Form.Label>
-
-                <Form.Control
-                  type="text"
-                  placeholder="e.g. Blood Group"
-                  value={item.label}
-                  onChange={(e) =>
-                    handleChange(
-                      index,
-                      "label",
-                      e.target.value
-                    )
-                  }
-                />
-
-              </Form.Group>
-
-            </Col>
-
-            {/* Value */}
-
-            <Col md={5}>
-
-              <Form.Group>
-
-                <Form.Label>
-                  Value
-                </Form.Label>
-
-                <Form.Control
-                  type="text"
-                  placeholder="e.g. O+"
-                  value={item.value}
-                  onChange={(e) =>
-                    handleChange(
-                      index,
-                      "value",
-                      e.target.value
-                    )
-                  }
-                />
-
-              </Form.Group>
-
-            </Col>
-
-            {/* Remove Button */}
-
-            <Col md={2}>
-
-              <Button
-                variant="danger"
-                onClick={() => removeRow(index)}
-                className="w-100"
-              >
-                -
-              </Button>
-
-            </Col>
-
-          </Row>
-
-        ))}
-
-        {/* Add Button */}
-
-        <Button
-          variant="success"
-          onClick={addRow}
-          className="mt-2"
-        >
-          + 
-        </Button>
-
-      </Card.Body>
-
-    </Card>
-
+      <Button
+        variant="outline-primary"
+        onClick={addRow}
+        className="mt-2 w-100 py-2 border-dashed"
+        style={{ borderStyle: "dashed" }}
+      >
+        + Add More Detail
+      </Button>
+    </div>
   );
 
 }

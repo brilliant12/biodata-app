@@ -63,119 +63,58 @@ const RASHI_OPTIONS = [
   };
 
   return (
-
-    <Card className="mb-3 shadow">
-
-      <Card.Header>
-        Horoscope Details
-      </Card.Header>
-
-      <Card.Body>
-
-        <Form.Group className="mb-2">
-
-          <Form.Label>Rashi</Form.Label>
-
-         <Form.Select
-            value={formData.horoscope?.rashi || ""}
-            onChange={(e) =>
-              updateField("rashi", e.target.value)
-            }
-          >
-
-            <option value="">
-              Select Rashi
+    <div className="form-section-content">
+      <Form.Group className="mb-2">
+        <Form.Label>Rashi</Form.Label>
+        <Form.Select
+          value={formData.horoscope?.rashi || ""}
+          onChange={(e) => updateField("rashi", e.target.value)}
+        >
+          <option value="">Select Rashi</option>
+          {RASHI_OPTIONS.map((rashi, index) => (
+            <option key={index} value={rashi}>
+              {rashi}
             </option>
+          ))}
+        </Form.Select>
+      </Form.Group>
 
-            {RASHI_OPTIONS.map((rashi, index) => (
-              <option key={index} value={rashi}>
-                {rashi}
-              </option>
-            ))}
-
-          </Form.Select>
-
-       
-
-        </Form.Group>
-
-       <Form.Group className="mb-2">
-
-  <Form.Label>Nakshatra</Form.Label>
-
-  <Form.Select
-    value={formData.horoscope?.nakshatra || ""}
-    onChange={(e) =>
-      updateField("nakshatra", e.target.value)
-    }
-  >
-
-    <option value="">
-      Select Nakshatra
-    </option>
-
-    {NAKSHATRA_OPTIONS.map((nakshatra, index) => (
-      <option key={index} value={nakshatra}>
-        {nakshatra}
-      </option>
-    ))}
-
-  </Form.Select>
-
-</Form.Group>
-
-        <Form.Group className="mb-2">
-
-          <Form.Label>Manglik</Form.Label>
-
-          <Form.Select
-            value={formData.horoscope.manglik}
-            onChange={(e) =>
-              updateField(
-                "manglik",
-                e.target.value
-              )
-            }
-          >
-
-            <option value="">
-              Select
+      <Form.Group className="mb-2">
+        <Form.Label>Nakshatra</Form.Label>
+        <Form.Select
+          value={formData.horoscope?.nakshatra || ""}
+          onChange={(e) => updateField("nakshatra", e.target.value)}
+        >
+          <option value="">Select Nakshatra</option>
+          {NAKSHATRA_OPTIONS.map((nakshatra, index) => (
+            <option key={index} value={nakshatra}>
+              {nakshatra}
             </option>
+          ))}
+        </Form.Select>
+      </Form.Group>
 
-            <option value="Yes">
-              Yes
-            </option>
+      <Form.Group className="mb-2">
+        <Form.Label>Manglik</Form.Label>
+        <Form.Select
+          value={formData.horoscope.manglik}
+          onChange={(e) => updateField("manglik", e.target.value)}
+        >
+          <option value="">Select</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </Form.Select>
+      </Form.Group>
 
-            <option value="No">
-              No
-            </option>
-
-          </Form.Select>
-
-        </Form.Group>
-
-        <Form.Group className="mb-2">
-
-          <Form.Label>Gotra</Form.Label>
-
-          <Form.Control
-            value={formData.horoscope.gotra}
-            onChange={(e) =>
-              updateField(
-                "gotra",
-                e.target.value
-              )
-            }
-          />
-
-        </Form.Group>
-
-      </Card.Body>
-
-    </Card>
-
+      <Form.Group className="mb-2">
+        <Form.Label>Gotra</Form.Label>
+        <Form.Control
+          value={formData.horoscope.gotra}
+          onChange={(e) => updateField("gotra", e.target.value)}
+        />
+      </Form.Group>
+    </div>
   );
-
 }
 
 export default HoroscopeDetails;

@@ -19,83 +19,39 @@ function EducationDetails() {
   };
 
   return (
+    <div className="form-section-content">
+      <Form.Group className="mb-2">
+        <Form.Label>Highest Degree</Form.Label>
+        <Form.Control
+          value={formData.education.degree}
+          onChange={(e) => updateField("degree", e.target.value)}
+        />
+      </Form.Group>
 
-    <Card className="mb-3 shadow">
+      <Form.Group className="mb-2">
+        <Form.Label>University</Form.Label>
+        <Form.Control
+          value={formData.education.university}
+          onChange={(e) => updateField("university", e.target.value)}
+        />
+      </Form.Group>
 
-      <Card.Header>
-        Education & Career
-      </Card.Header>
+      <Form.Group className="mb-2">
+        <Form.Label>Profession</Form.Label>
+        <Form.Control
+          value={formData.education.profession}
+          onChange={(e) => updateField("profession", e.target.value)}
+        />
+      </Form.Group>
 
-      <Card.Body>
-
-        <Form.Group className="mb-2">
-
-          <Form.Label>Highest Degree</Form.Label>
-
-          <Form.Control
-            value={formData.education.degree}
-            onChange={(e) =>
-              updateField(
-                "degree",
-                e.target.value
-              )
-            }
-          />
-
-        </Form.Group>
-
-        <Form.Group className="mb-2">
-
-          <Form.Label>University</Form.Label>
-
-          <Form.Control
-            value={formData.education.university}
-            onChange={(e) =>
-              updateField(
-                "university",
-                e.target.value
-              )
-            }
-          />
-
-        </Form.Group>
-
-        <Form.Group className="mb-2">
-
-          <Form.Label>Profession</Form.Label>
-
-          <Form.Control
-            value={formData.education.profession}
-            onChange={(e) =>
-              updateField(
-                "profession",
-                e.target.value
-              )
-            }
-          />
-
-        </Form.Group>
-
-        <Form.Group className="mb-2">
-
-          <Form.Label>Company</Form.Label>
-
-          <Form.Control
-            value={formData.education.company}
-            onChange={(e) =>
-              updateField(
-                "company",
-                e.target.value
-              )
-            }
-          />
-
-        </Form.Group>
-
-      </Card.Body>
-
-    </Card>
-
+      <Form.Group className="mb-2">
+        <Form.Label>Company</Form.Label>
+        <Form.Control
+          value={formData.education.company}
+          onChange={(e) => updateField("company", e.target.value)}
+        />
+      </Form.Group>
+    </div>
   );
 
 }

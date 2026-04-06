@@ -19,87 +19,44 @@ function PartnerExpectation() {
   };
 
   return (
-
-    <Card className="mb-3 shadow">
-
-      <Card.Header>
-        Partner Expectation
-      </Card.Header>
-
-      <Card.Body>
-
-        <Form.Group className="mb-2">
-
-          <Form.Label>Age From</Form.Label>
-
+    <div className="form-section-content">
+      <Form.Group className="mb-2">
+        <Form.Label>Age Range</Form.Label>
+        <div className="d-flex gap-2 align-items-center">
           <Form.Control
             type="number"
+            placeholder="From"
             value={formData.partner.ageFrom}
-            onChange={(e) =>
-              updateField(
-                "ageFrom",
-                e.target.value
-              )
-            }
+            onChange={(e) => updateField("ageFrom", e.target.value)}
           />
-
-        </Form.Group>
-
-        <Form.Group className="mb-2">
-
-          <Form.Label>Age To</Form.Label>
-
+          <span>to</span>
           <Form.Control
             type="number"
+            placeholder="To"
             value={formData.partner.ageTo}
-            onChange={(e) =>
-              updateField(
-                "ageTo",
-                e.target.value
-              )
-            }
+            onChange={(e) => updateField("ageTo", e.target.value)}
           />
+        </div>
+      </Form.Group>
 
-        </Form.Group>
+      <Form.Group className="mb-2">
+        <Form.Label>Expected Height</Form.Label>
+        <Form.Control
+          value={formData.partner.height}
+          onChange={(e) => updateField("height", e.target.value)}
+        />
+      </Form.Group>
 
-        <Form.Group className="mb-2">
-
-          <Form.Label>Expected Height</Form.Label>
-
-          <Form.Control
-            value={formData.partner.height}
-            onChange={(e) =>
-              updateField(
-                "height",
-                e.target.value
-              )
-            }
-          />
-
-        </Form.Group>
-
-        <Form.Group className="mb-2">
-
-          <Form.Label>Expectation Notes</Form.Label>
-
-          <Form.Control
-            as="textarea"
-            rows={3}
-            value={formData.partner.expectation}
-            onChange={(e) =>
-              updateField(
-                "expectation",
-                e.target.value
-              )
-            }
-          />
-
-        </Form.Group>
-
-      </Card.Body>
-
-    </Card>
-
+      <Form.Group className="mb-2">
+        <Form.Label>Expectation Notes</Form.Label>
+        <Form.Control
+          as="textarea"
+          rows={3}
+          value={formData.partner.expectation}
+          onChange={(e) => updateField("expectation", e.target.value)}
+        />
+      </Form.Group>
+    </div>
   );
 
 }

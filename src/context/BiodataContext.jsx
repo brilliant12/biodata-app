@@ -1,13 +1,11 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
+import { mockBiodata } from "../utils/mockData";
 
 const BiodataContext = createContext();
 
-export const BiodataProvider = ({ children }) => {
-
-  const [template, setTemplate] = useState("classic");
-
+export const BiodataProvider = ({ children, initialTemplate }) => {
+  const [template, setTemplate] = useState(initialTemplate || "classic");
   const [formData, setFormData] = useState({
-
     personal: {
       name: "",
       gender: "",
@@ -19,7 +17,6 @@ export const BiodataProvider = ({ children }) => {
       income: "",
       city: ""
     },
-
     family: {
       father: "",
       mother: "",
@@ -27,37 +24,39 @@ export const BiodataProvider = ({ children }) => {
       familyType: "",
       familyStatus: ""
     },
-
     education: {
       degree: "",
       university: "",
       profession: "",
       company: ""
     },
-
     horoscope: {
       rashi: "",
       nakshatra: "",
       manglik: "",
       gotra: ""
     },
-
     partner: {
       ageFrom: "",
       ageTo: "",
       height: "",
       expectation: ""
     },
-      otherDetails: [
-    { label: "", value: "" }
-  ],
-
+    otherDetails: [
+      { label: "", value: "" }
+    ],
     photo: null
-
   });
 
-  return (
+  // Check for mock parameter to load sample data
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("mock") === "true") {
+      setFormData(mockBiodata);
+    }
+  }, []);
 
+  return (
     <BiodataContext.Provider
       value={{
         template,
@@ -68,9 +67,7 @@ export const BiodataProvider = ({ children }) => {
     >
       {children}
     </BiodataContext.Provider>
-
   );
-
 };
 
 // eslint-disable-next-line react-refresh/only-export-components

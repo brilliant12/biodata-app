@@ -39,71 +39,71 @@ function BiodataPreview() {
 
       {/* Controls */}
 
-    <Card className="preview-toolbar shadow-sm">
+      <Card className="preview-toolbar shadow-sm bg-white">
 
-  <Card.Body className="d-flex justify-content-between align-items-center">
+        <Card.Body className="d-flex justify-content-between align-items-center">
 
-    {/* Left */}
+          {/* Left */}
 
-    <div className="fw-semibold">
+          <div className="fw-semibold">
 
-      Biodata Preview
+            Biodata Preview
 
-      <span className="ms-2 text-muted small">
-        A4 Layout
-      </span>
+            <span className="ms-2 text-muted small">
+              A4 Layout
+            </span>
 
-    </div>
+          </div>
 
-    {/* Right */}
+          {/* Right */}
 
-    <div className="d-flex align-items-center gap-2">
+          <div className="d-flex align-items-center gap-2">
 
-      <ButtonGroup>
+            <ButtonGroup>
 
-        <Button
-          size="sm"
-          variant="outline-secondary"
-          onClick={() =>
-            setZoom(z => Math.max(0.6, z - 0.1))
-          }
-        >
-          −
-        </Button>
+              <Button
+                size="sm"
+                variant="outline-secondary"
+                onClick={() =>
+                  setZoom(z => Math.max(0.6, z - 0.1))
+                }
+              >
+                −
+              </Button>
 
-        <Button
-          size="sm"
-          variant="light"
-          disabled
-        >
-          {Math.round(zoom * 100)}%
-        </Button>
+              <Button
+                size="sm"
+                variant="light"
+                disabled
+              >
+                {Math.round(zoom * 100)}%
+              </Button>
 
-        <Button
-          size="sm"
-          variant="outline-secondary"
-          onClick={() =>
-            setZoom(z => Math.min(1.5, z + 0.1))
-          }
-        >
-          +
-        </Button>
+              <Button
+                size="sm"
+                variant="outline-secondary"
+                onClick={() =>
+                  setZoom(z => Math.min(1.5, z + 0.1))
+                }
+              >
+                +
+              </Button>
 
-      </ButtonGroup>
+            </ButtonGroup>
 
-      <Button
-        size="sm"
-        variant="outline-primary"
-        onClick={() => setZoom(1)}
-      >
-        Reset
-      </Button>
+            <Button
+              size="sm"
+              variant="outline-primary"
+              onClick={() => setZoom(1)}
+            >
+              Reset
+            </Button>
 
-    </div>
+          </div>
 
-  </Card.Body>
+        </Card.Body>
 
-</Card>
+      </Card>
 
       {/* Preview */}
 
@@ -117,15 +117,15 @@ function BiodataPreview() {
           }}
         >
 
-        <div className="a4-page" id="biodata-preview">
+          <div className="a4-page" id="biodata-preview">
 
-  {renderTemplate()}
+            {renderTemplate()}
 
-  <div className="page-label">
-    Page 1
-  </div>
+            <div className="page-label">
+              Page 1
+            </div>
 
-</div>
+          </div>
         </div>
 
       </div>

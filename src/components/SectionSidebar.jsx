@@ -37,7 +37,6 @@ const sections = [
 ];
 
 function SectionSidebar() {
-
   const scrollToSection = (id) => {
 
     const element =
@@ -82,9 +81,7 @@ function SectionSidebar() {
         ))}
 
       </Nav>
-
     </div>
-
   );
 
 }

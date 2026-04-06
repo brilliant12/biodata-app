@@ -9,20 +9,21 @@ function ClassicTemplate() {
     religionHeaders[personal.religion] || religionHeaders["Other"];
   return (
   <div
-  style={{
-    padding: "25px",
-    fontFamily: "Arial, sans-serif",
-    fontSize: "14px",
-    lineHeight: "1.6",
-    border: "4px solid #c59d5f",
-    position: "relative",
-    height: "100%",
-  
-  }}
->
+    className="template-outer-container"
+    style={{
+      padding: "25px",
+      fontFamily: "Arial, sans-serif",
+      fontSize: "14px",
+      lineHeight: "1.6",
+      border: "4px solid #c59d5f",
+      position: "relative",
+      minHeight: "100%",
+    }}
+  >
       
 
       <div
+        className="template-inner-container"
         style={{
           border: "1px solid #c59d5f",
           padding: "20px",
@@ -195,22 +196,29 @@ function TableRow({ label, value }) {
     <div
       style={{
         display: "flex",
-        marginBottom: "6px",
+        marginBottom: "8px",
+        borderBottom: "1px solid #f0f0f0",
+        paddingBottom: "4px",
       }}
     >
       <div
         style={{
-          width: "180px",
+          width: "200px",
           fontWeight: "bold",
           color: "#333",
+          display: "flex",
+          justifyContent: "space-between",
+          paddingRight: "15px",
         }}
       >
-        {label}
+        <span>{label}</span>
+        <span>:</span>
       </div>
 
       <div
         style={{
           flex: 1,
+          color: "#555",
         }}
       >
         {value}

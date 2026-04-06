@@ -17,6 +17,7 @@ function ModernTemplate() {
     religionHeaders[personal.religion] || religionHeaders["Other"];
   return (
     <div
+      className="template-outer-container"
       style={{
         display: "flex",
         minHeight: "1123px",
@@ -154,10 +155,30 @@ function Row({ label, value }) {
   if (!value) return null;
 
   return (
-    <div style={{ display: "flex" }}>
-      <div style={{ width: "160px", fontWeight: "bold" }}>{label}</div>
+    <div
+      style={{
+        display: "flex",
+        marginBottom: "8px",
+        borderBottom: "1px solid #f0f0f0",
+        paddingBottom: "4px",
+        fontSize: "14px",
+      }}
+    >
+      <div
+        style={{
+          width: "180px",
+          fontWeight: "bold",
+          color: "#2c3e50",
+          display: "flex",
+          justifyContent: "space-between",
+          paddingRight: "15px",
+        }}
+      >
+        <span>{label}</span>
+        <span>:</span>
+      </div>
 
-      <div>{value}</div>
+      <div style={{ flex: 1, color: "#34495e" }}>{value}</div>
     </div>
   );
 }

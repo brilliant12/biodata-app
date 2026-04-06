@@ -9,6 +9,7 @@ function RoyalTemplate() {
     religionHeaders[personal.religion] || religionHeaders["Other"];
   return (
     <div
+      className="template-outer-container"
       style={{
         padding: "40px",
         fontFamily: "Georgia, serif",
@@ -140,17 +141,29 @@ function RoyalRow({ label, value }) {
   if (!value) return null;
 
   return (
-    <div style={{ display: "flex" }}>
+    <div
+      style={{
+        display: "flex",
+        marginBottom: "10px",
+        borderBottom: "1px dotted #bfa046",
+        paddingBottom: "5px",
+      }}
+    >
       <div
         style={{
-          width: "150px",
+          width: "160px",
           fontWeight: "bold",
+          color: "#8b5e3c",
+          display: "flex",
+          justifyContent: "space-between",
+          paddingRight: "15px",
         }}
       >
-        {label}
+        <span>{label}</span>
+        <span>:</span>
       </div>
 
-      <div>{value}</div>
+      <div style={{ flex: 1, color: "#333" }}>{value}</div>
     </div>
   );
 }

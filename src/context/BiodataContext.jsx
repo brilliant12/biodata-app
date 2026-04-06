@@ -48,6 +48,9 @@ export const BiodataProvider = ({ children }) => {
       height: "",
       expectation: ""
     },
+      otherDetails: [
+    { label: "", value: "" }
+  ],
 
     photo: null
 

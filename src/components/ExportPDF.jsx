@@ -1,11 +1,30 @@
-import { Button } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
+import { useState } from "react";
 import exportToPDF from "../utils/pdfExport";
 
 function ExportPDF() {
 
+  const [isExporting, setIsExporting] = useState(false);
+
   const handleExport = async () => {
-    
-    await exportToPDF("biodata-preview");
+
+    try {
+
+      setIsExporting(true);
+
+      await exportToPDF("biodata-preview");
+
+      // success — button will re-enable automatically
+
+    } catch (error) {
+
+      console.error("PDF Export Failed:", error);
+
+    } finally {
+
+      setIsExporting(false);
+
+    }
 
   };
 
@@ -15,8 +34,23 @@ function ExportPDF() {
       variant="success"
       className="w-100 mb-3"
       onClick={handleExport}
+      disabled={isExporting}
     >
-      Download PDF
+
+      {isExporting ? (
+        <>
+          <Spinner
+            as="span"
+            animation="border"
+            size="sm"
+            className="me-2"
+          />
+          Generating PDF...
+        </>
+      ) : (
+        "Download PDF"
+      )}
+
     </Button>
 
   );

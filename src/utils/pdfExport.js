@@ -2,95 +2,49 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
 const exportToPDF = async (elementId) => {
-
-  const element =
-    document.getElementById(elementId);
-
+  const element = document.getElementById(elementId);
   if (!element) return;
 
   try {
+    const marginMM = 10; // margin in mm
 
-    const canvas =
-      await html2canvas(element, {
-        scale: 3,              // higher quality
-        useCORS: true,
-        allowTaint: true,
-        backgroundColor: "#ffffff"
-      });
+    // Capture canvas at lower scale for smaller file size
+    const canvas = await html2canvas(element, {
+      scale: 2,              // good balance between quality & size
+      useCORS: true,
+      backgroundColor: "#ffffff",
+    });
 
-    const imgData =
-      canvas.toDataURL("image/png");
+    // Convert px to mm
+    const pxToMm = 0.264583;
+    const pdfWidth = canvas.width * pxToMm + marginMM * 2;
+    const pdfHeight = canvas.height * pxToMm + marginMM * 2;
 
-    const pdf =
-      new jsPDF("p", "mm", "a4");
+    const imgData = canvas.toDataURL("image/jpeg", 0.7); // compress image
 
-    const pageWidth = 210;
-    const pageHeight = 297;
+    // Create PDF with exact content size + margins
+    const pdf = new jsPDF({
+      orientation: "p",
+      unit: "mm",
+      format: [pdfWidth, pdfHeight],
+    });
 
-    /* Add margins */
-
-    const margin = 10;
-
-    const usableWidth =
-      pageWidth - margin * 2;
-
-    const usableHeight =
-      pageHeight - margin * 2;
-
-    const imgWidth = usableWidth;
-
-    const imgHeight =
-      (canvas.height * imgWidth) /
-      canvas.width;
-
-    let heightLeft = imgHeight;
-
-    let position = margin;
-
-    /* First Page */
-
+    // Add image with margin
     pdf.addImage(
       imgData,
-      "PNG",
-      margin,
-      position,
-      imgWidth,
-      imgHeight
+      "JPEG",
+      marginMM,
+      marginMM,
+      canvas.width * pxToMm,
+      canvas.height * pxToMm,
+      undefined,
+      "FAST"
     );
 
-    heightLeft -= usableHeight;
-
-    /* Extra Pages */
-
-    while (heightLeft > 0) {
-
-      position =
-        heightLeft - imgHeight + margin;
-
-      pdf.addPage();
-
-      pdf.addImage(
-        imgData,
-        "PNG",
-        margin,
-        position,
-        imgWidth,
-        imgHeight
-      );
-
-      heightLeft -= usableHeight;
-
-    }
-
     pdf.save("biodata.pdf");
-
+  } catch (error) {
+    console.error("PDF Export Error:", error);
   }
-  catch (error) {
-
-    console.error(error);
-
-  }
-
 };
 
 export default exportToPDF;

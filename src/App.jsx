@@ -6,7 +6,7 @@ import { lazy, Suspense } from "react";
 //import TemplateSelector from "./components/TemplateSelector";
 import "./styles/accordion.css";
 import "./styles/preview.css";
-
+import { useLocation } from "react-router-dom";
 /* Lazy Components */
 
 const TemplateThumbnail = lazy(() => import("./components/TemplateThumbnail"));
@@ -54,8 +54,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
+
+    const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const templateId = params.get("template");
+  
   return (
-    <BiodataProvider>
+    <BiodataProvider initialTemplate={templateId}>
       <Container fluid className="p-3">
         <Suspense fallback={<div>Loading...</div>}></Suspense>
         <Row>

@@ -1,0 +1,113 @@
+/* Full viewport gradient */
+.landing-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #6be585, #dd3e54);
+  color: #fff;
+  padding: 50px 20px;
+  scroll-behavior: smooth;
+}
+
+/* Hero Section */
+.hero-section {
+  padding-top: 50px;
+  padding-bottom: 80px;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+}
+
+.hero-btn {
+  font-weight: 600;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.3);
+}
+
+/* Hero animations */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-hero {
+  animation: fadeInUp 1s ease forwards;
+}
+
+.animate-subtitle {
+  animation: fadeInUp 1.5s ease forwards;
+}
+
+/* Templates Section */
+.templates-section {
+  padding-bottom: 50px;
+}
+
+.template-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.3s ease;
+}
+
+.template-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 35px rgba(0,0,0,0.35);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.template-img {
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.template-card:hover .template-img {
+  transform: scale(1.08) rotate(1deg);
+}
+
+.card-title {
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+button {
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+  .template-img {
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .template-img {
+    height: 150px;
+  }
+}
